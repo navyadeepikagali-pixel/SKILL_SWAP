@@ -1,0 +1,40 @@
+.phase8-stat-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0}
+.phase8-stat-grid>article,.phase8-status-grid>article{display:flex;flex-direction:column;gap:6px;padding:17px;background:#fff;border:1px solid #e5ece7;border-radius:10px}
+.phase8-stat-grid span,.phase8-status-grid span{color:#708076;font-size:11px;font-weight:600}
+.phase8-stat-grid b{font:800 24px Manrope,sans-serif;color:#205f49}
+.phase8-stat-grid small,.phase8-list small{color:#839087;font-size:10px}
+.phase8-admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.phase8-admin-grid h2,.phase8-admin-grid h3{margin-top:0}
+.phase8-admin-grid p{font-size:12px;color:#53655b}
+.phase8-status-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.phase8-status-grid b{font:700 19px Manrope,sans-serif}
+.phase8-admin-shortcuts{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}
+.phase8-filter-row{display:flex;align-items:end;gap:14px;flex-wrap:wrap;margin:16px 0}
+.phase8-filter-row label{display:flex;flex-direction:column;gap:6px;min-width:190px;color:#607066;font-size:11px;font-weight:700}
+.phase8-filter-row input,.phase8-filter-row select{height:38px;padding:8px 10px;border:1px solid #dfe8e2;border-radius:7px;background:white;color:#26372d;font:400 12px "DM Sans",sans-serif}
+.phase8-filter-row>span{margin:0 0 10px auto;color:#748279;font-size:11px}
+.phase8-list{padding:0 17px}
+.phase8-list>article,.phase-review-list>article{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:15px 0;border-bottom:1px solid #edf1ee}
+.phase8-list>article:last-child,.phase-review-list>article:last-child{border-bottom:0}
+.phase8-list>article>div:first-child,.phase-review-list>article>div:first-child{display:flex;flex-direction:column;gap:5px;min-width:0}
+.phase8-list b,.phase-review-list b{font-size:12px}
+.phase8-actions{display:flex;gap:7px;flex-wrap:wrap}
+.phase-review-list{padding:0 17px}
+.phase-review-list p{margin:3px 0;color:#5c6c62;font-size:12px}
+.phase-reviewed-label{color:#49825e;font-size:11px;font-weight:700}
+.phase-session-ledger{margin-top:7px;color:#66816e;font-size:10px}
+.phase-review-modal{width:min(500px,100%);display:flex;flex-direction:column;gap:14px}
+.phase-review-modal label,.phase8-dispute-modal>label{display:flex;flex-direction:column;gap:6px;color:#586a5f;font-size:11px;font-weight:700}
+.phase-review-modal input,.phase-review-modal select,.phase-review-modal textarea,.phase8-dispute-modal textarea,.phase8-dispute-modal input,.phase8-dispute-modal select{width:100%;padding:9px 10px;border:1px solid #dfe8e2;border-radius:7px;background:#fff;color:#25372c;font:400 12px "DM Sans",sans-serif}
+.phase8-dispute-modal{width:min(760px,100%);max-height:min(88vh,900px);overflow:auto;display:flex;flex-direction:column;gap:12px}
+.phase8-dispute-modal h3{margin:7px 0 0;font:700 13px Manrope,sans-serif}
+.phase8-dispute-modal p,.phase8-dispute-modal small{color:#65756b;font-size:11px}
+.phase8-evidence{display:block;padding:6px 0;border-bottom:1px solid #edf1ee}
+.phase8-messages{max-height:220px;overflow:auto;padding:9px;background:#f6f8f6;border:1px solid #e8eee9;border-radius:8px}
+.phase8-messages article{padding:8px;border-bottom:1px solid #e5ece7}
+.phase8-messages p{margin:4px 0}
+.phase8-decision-form{border-top:1px solid #e8eee9;padding-top:12px}
+.phase-notification.unread{background:#f3faf5}
+.phase-notification.unread b:before{content:"";display:inline-block;width:7px;height:7px;margin:0 7px 1px 0;border-radius:50%;background:#328267}
+@media(max-width:850px){.phase8-admin-grid{grid-template-columns:1fr}.phase8-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.phase8-stat-grid{grid-template-columns:1fr 1fr;gap:8px}.phase8-stat-grid>article{padding:12px}.phase8-stat-grid b{font-size:20px}.phase8-status-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.phase8-list>article,.phase-review-list>article{align-items:flex-start;flex-direction:column}.phase8-actions{width:100%}.phase8-actions .button{flex:1}.phase8-filter-row label{width:100%}.phase8-filter-row>span{margin-left:0}}

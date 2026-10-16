@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: skill-swap
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: EMAIL_PROVIDER
+        value: none
+      - key: ALLOW_PASSWORD_ONLY_AUTH
+        value: "true"
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true

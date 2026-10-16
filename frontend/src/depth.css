@@ -1,0 +1,129 @@
+:root {
+  --surface-raised: #fff;
+  --surface-shadow: 0 12px 28px #203a2b0c, 0 2px 5px #203a2b08;
+  --surface-shadow-hover: 0 22px 42px #203a2b18, 0 8px 14px #203a2b0c;
+}
+
+.phase-main,
+.auth-page {
+  perspective: 1400px;
+}
+
+.phase-panel,
+.phase-action-card,
+.phase-category-card,
+.phase-subject-card,
+.phase-tutor-card,
+.phase-chat-list,
+.phase-chat-panel,
+.phase-plan-card,
+.phase-usage-card,
+.phase-session-card,
+.auth-card {
+  background-image: linear-gradient(145deg, #fff 0%, #fff 76%, #f8fbf9 100%);
+  box-shadow: var(--surface-shadow);
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+  transform-style: preserve-3d;
+}
+
+.phase-panel:hover,
+.phase-chat-list:hover,
+.phase-chat-panel:hover,
+.auth-card:hover {
+  box-shadow: var(--surface-shadow-hover);
+}
+
+.phase-action-card:hover,
+.phase-category-card:hover,
+.phase-subject-card:hover,
+.phase-tutor-card:hover,
+.phase-plan-card:hover,
+.phase-usage-card:hover,
+.phase-session-card:hover {
+  transform: translateY(-3px) rotateX(.35deg);
+  box-shadow: var(--surface-shadow-hover);
+}
+
+.phase-action-card,
+.phase-category-card,
+.phase-subject-card,
+.phase-tutor-card,
+.phase-plan-card,
+.phase-usage-card,
+.phase-session-card {
+  border-color: #e1ebe4;
+}
+
+.phase-nav-link {
+  transition: background-color .18s ease, color .18s ease, transform .18s ease;
+}
+
+.phase-nav-link:hover,
+.phase-nav-link.active {
+  transform: translateX(3px);
+}
+
+.button {
+  box-shadow: 0 5px 12px #173d2a14, inset 0 1px #ffffff38;
+  transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease;
+}
+
+.button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 9px 20px #173d2a20, inset 0 1px #ffffff4c;
+}
+
+.button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px #173d2a16;
+}
+
+.category-card,
+.hero-art .art-card,
+.auth-visual {
+  transform-style: preserve-3d;
+}
+
+.hero-art .art-card {
+  box-shadow: 0 18px 36px #203a2b16, 0 3px 8px #203a2b0a;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.hero-art .art-card:hover {
+  transform: translateY(-4px) rotateY(-3deg);
+  box-shadow: 0 24px 42px #203a2b20;
+}
+
+.auth-card {
+  box-shadow: 0 28px 65px #193a2916, 0 5px 14px #193a2908;
+}
+
+@media (hover: none), (max-width: 760px) {
+  .phase-panel:hover,
+  .phase-chat-list:hover,
+  .phase-chat-panel:hover,
+  .auth-card:hover {
+    box-shadow: var(--surface-shadow);
+  }
+
+  .phase-action-card:hover,
+  .phase-category-card:hover,
+  .phase-subject-card:hover,
+  .phase-tutor-card:hover,
+  .phase-plan-card:hover,
+  .phase-usage-card:hover,
+  .phase-session-card:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

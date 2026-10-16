@@ -1,0 +1,882 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Install Skill Swap dependencies",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"install"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Build Skill Swap frontend",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"build"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Test Skill Swap backend",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"test"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "Install Phase 2 backend dependencies",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"install"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Update Phase 2 dependencies",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"install"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Run Phase 2 authentication tests",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"test"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "Check production dependency audit",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"audit",
+				"--omit=dev"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check backend server syntax",
+			"type": "shell",
+			"command": "node",
+			"args": [
+				"--check",
+				"backend/src/server.js"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Install patched dependencies",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"install"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Final Phase 2 test run",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"test"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "Final frontend build",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"build"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Final production audit",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"audit",
+				"--omit=dev"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Full dependency audit",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"audit"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Apply compatible audit fixes",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"audit",
+				"fix"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Confirm Phase 2 backend tests",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"test"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "Confirm backend syntax",
+			"type": "shell",
+			"command": "node",
+			"args": [
+				"--check",
+				"backend/src/server.js"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Confirm production dependencies",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"audit",
+				"--omit=dev"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Skill Swap backend tests",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"test"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "Skill Swap frontend build",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"build"
+			],
+			"isBackground": false,
+			"problemMatcher": [
+				"$tsc"
+			]
+		},
+		{
+			"label": "Run Skill Swap frontend",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"dev",
+				"--prefix",
+				"frontend",
+				"--",
+				"--host",
+				"127.0.0.1"
+			],
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "Run Skill Swap API (local demo DB)",
+			"type": "shell",
+			"command": "node",
+			"args": [
+				"--input-type=module",
+				"-e",
+				"import { randomBytes } from 'node:crypto'; import { MongoMemoryReplSet } from 'mongodb-memory-server'; const db = await MongoMemoryReplSet.create({ replSet: { count: 1 } }); process.env.NODE_ENV = 'development'; process.env.PORT = '5000'; process.env.CLIENT_URL = 'http://127.0.0.1:5173'; process.env.MONGODB_URI = db.getUri('skill_swap'); process.env.JWT_SECRET = randomBytes(48).toString('hex'); try { await import('./backend/src/seed.js'); const { start } = await import('./backend/src/server.js'); await start(); console.info('Skill Swap local demo database is active; data is temporary for this run.'); } catch (error) { await db.stop(); console.error(error); process.exitCode = 1; }"
+			],
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "Start Skill Swap demo API",
+			"type": "shell",
+			"command": "node",
+			"args": [
+				"--input-type=module",
+				"-e",
+				"import { randomBytes } from \"node:crypto\"; import { MongoMemoryReplSet } from \"mongodb-memory-server\"; const db = await MongoMemoryReplSet.create({ replSet: { count: 1 } }); process.env.NODE_ENV = \"development\"; process.env.PORT = \"5000\"; process.env.CLIENT_URL = \"http://127.0.0.1:5173\"; process.env.MONGODB_URI = db.getUri(\"skill_swap\"); process.env.JWT_SECRET = randomBytes(48).toString(\"hex\"); try { await import(\"./backend/src/seed.js\"); const { start } = await import(\"./backend/src/server.js\"); await start(); console.info(\"Skill Swap local demo database is active; data is temporary for this run.\"); } catch (error) { await db.stop(); console.error(error); process.exitCode = 1; }"
+			],
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "Start API with temporary catalog DB",
+			"type": "shell",
+			"command": "node backend/.local-demo.mjs",
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "Verify Skill Swap frontend build",
+			"type": "shell",
+			"command": "npm run build --prefix frontend",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Build after sign-in label update",
+			"type": "shell",
+			"command": "npm run build --prefix frontend",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Verify production frontend build",
+			"type": "shell",
+			"command": "npm run build --prefix frontend",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Run backend integration tests",
+			"type": "shell",
+			"command": "npm test --workspace backend",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check Docker availability",
+			"type": "shell",
+			"command": "docker --version",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Final backend regression suite",
+			"type": "shell",
+			"command": "npm test --workspace backend",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Recheck project build",
+			"type": "shell",
+			"command": "npm run build",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Inspect Git state for commit",
+			"type": "shell",
+			"command": "git status --short --branch",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Build register route fix",
+			"type": "shell",
+			"command": "npm run build",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Initialize project Git repository",
+			"type": "shell",
+			"command": "git init; git config user.name; git config user.email",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Stage project for initial commit",
+			"type": "shell",
+			"command": "git add -A; git status --short",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Verify Git commit identity",
+			"type": "shell",
+			"command": "git config user.name; git config user.email",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Verify author and commit project",
+			"type": "shell",
+			"command": "git config user.email",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check current Git author config",
+			"type": "shell",
+			"command": "git config user.name; git config user.email; git status --short --branch",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Validate signup across email domains",
+			"type": "shell",
+			"command": "npm test --workspace backend",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Build multi-email registration update",
+			"type": "shell",
+			"command": "npm run build",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Re-run signup registration test",
+			"type": "shell",
+			"command": "node --test --test-name-pattern=\"different email providers\" backend/test/auth.test.js",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Run full backend tests",
+			"type": "shell",
+			"command": "npm test --workspace backend",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Build password validation fix",
+			"type": "shell",
+			"command": "npm run build",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Final password validation build",
+			"type": "shell",
+			"command": "npm run build",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Run Skill Swap application",
+			"type": "shell",
+			"command": "npm run dev",
+			"isBackground": true,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Run project validation",
+			"type": "shell",
+			"command": "cmd /c \"cd /d c:\\Users\\pc\\Downloads\\SKILL-SWAP PROJECT && npm test --workspace backend && npm run build --workspace frontend\"",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Project validation",
+			"type": "shell",
+			"command": "& 'C:\\Windows\\System32\\cmd.exe' /c 'cd /d \"c:\\Users\\pc\\Downloads\\SKILL-SWAP PROJECT\" & npm test --workspace backend & npm run build --workspace frontend'",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Start Skill Swap app",
+			"type": "shell",
+			"command": "& 'C:\\Windows\\System32\\cmd.exe' /c 'cd /d \"c:\\Users\\pc\\Downloads\\SKILL-SWAP PROJECT\" & npm run dev'",
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check API health",
+			"type": "shell",
+			"command": "& 'C:\\Windows\\System32\\cmd.exe' /c 'curl -i http://localhost:5000/api/health && echo. && curl -i http://localhost:5000/api/categories'",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "api-health-2",
+			"type": "shell",
+			"command": "powershell.exe -NoProfile -Command \"Invoke-WebRequest -Uri http://localhost:5000/api/health | Select-Object -ExpandProperty Content; Write-Host '---'; Invoke-WebRequest -Uri http://localhost:5000/api/categories | Select-Object -ExpandProperty Content\"",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "check-mongo",
+			"type": "shell",
+			"command": "& 'C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe' -NoProfile -Command \"Get-Command mongod -ErrorAction SilentlyContinue | Format-Table -HideTableHeaders -AutoSize; Get-Command mongo -ErrorAction SilentlyContinue | Format-Table -HideTableHeaders -AutoSize\"",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Start memory Mongo",
+			"type": "shell",
+			"command": "& 'C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe' -NoProfile -Command \"$ProgressPreference='SilentlyContinue'; node --input-type=module -e \\\"import { MongoMemoryReplSet } from 'mongodb-memory-server'; const repl = await MongoMemoryReplSet.create({ replSet: { count: 1, storageEngine: 'wiredTiger' } }); console.log(repl.getUri()); setInterval(() => {}, 60000); process.on('SIGINT', async () => { await repl.stop(); process.exit(0); });\\\"\"",
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "Run app with in-memory Mongo",
+			"type": "shell",
+			"command": "& 'C:\\Windows\\System32\\cmd.exe' /c 'cd /d \"c:\\Users\\pc\\Downloads\\SKILL-SWAP PROJECT\" & set MONGODB_URI=mongodb://127.0.0.1:50963/?replicaSet=testset & npm run dev'",
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "Seed catalog data",
+			"type": "shell",
+			"command": "npm run seed --prefix backend",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "List running node processes",
+			"type": "shell",
+			"command": "& 'C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe' -NoProfile -Command \"Get-CimInstance Win32_Process | Where-Object { $_.Name -eq 'node.exe' } | Select-Object ProcessId, Name, CommandLine | Format-Table -AutoSize\"",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Fix env files",
+			"type": "shell",
+			"command": "python -c \"from pathlib import Path; p=Path(r'c:\\Users\\pc\\Downloads\\SKILL-SWAP PROJECT\\backend\\.env'); p.write_text('NODE_ENV=development\\nPORT=5000\\nCLIENT_URL=http://localhost:5173\\nMONGODB_URI=mongodb://127.0.0.1:27017/skill_swap?replicaSet=rs0\\nJWT_SECRET=replace-with-a-long-random-secret\\nAUTH_COOKIE_NAME=skill_swap_token\\nAUTH_COOKIE_SAME_SITE=lax\\nAUTH_COOKIE_MAX_AGE_MS=604800000\\nSESSION_ALLOWED_DURATIONS=30,45,60\\nSESSION_CREDIT_PRICE=10\\nSMTP_HOST=\\nSMTP_PORT=\\nSMTP_SECURE=false\\nSMTP_USER=\\nSMTP_PASS=\\nEMAIL_FROM=\\nPASSWORD_RESET_URL=http://localhost:5173/reset-password\\nADMIN_EMAIL=\\nADMIN_PASSWORD=\\nADMIN_NAME=Skill Swap Admin\\n'); q=Path(r'c:\\Users\\pc\\Downloads\\SKILL-SWAP PROJECT\\.env.example'); q.write_text('NODE_ENV=development\\nPORT=5000\\nCLIENT_URL=http://localhost:5173\\nMONGODB_URI=mongodb://127.0.0.1:27017/skill_swap?replicaSet=rs0\\nJWT_SECRET=replace-with-a-long-random-secret\\nAUTH_COOKIE_NAME=skill_swap_token\\nAUTH_COOKIE_SAME_SITE=lax\\nAUTH_COOKIE_MAX_AGE_MS=604800000\\nSESSION_ALLOWED_DURATIONS=30,45,60\\nSESSION_CREDIT_PRICE=10\\nSMTP_HOST=\\nSMTP_PORT=\\nSMTP_SECURE=false\\nSMTP_USER=\\nSMTP_PASS=\\nEMAIL_FROM=\\nPASSWORD_RESET_URL=http://localhost:5173/reset-password\\nADMIN_EMAIL=\\nADMIN_PASSWORD=\\nADMIN_NAME=Skill Swap Admin\\n')\"",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Fix env files via Node",
+			"type": "shell",
+			"command": "node -e \"const fs=require('fs'); fs.writeFileSync('c:/Users/pc/Downloads/SKILL-SWAP PROJECT/backend/.env', 'NODE_ENV=development\\nPORT=5000\\nCLIENT_URL=http://localhost:5173\\nMONGODB_URI=mongodb://127.0.0.1:27017/skill_swap?replicaSet=rs0\\nJWT_SECRET=replace-with-a-long-random-secret\\nAUTH_COOKIE_NAME=skill_swap_token\\nAUTH_COOKIE_SAME_SITE=lax\\nAUTH_COOKIE_MAX_AGE_MS=604800000\\nSESSION_ALLOWED_DURATIONS=30,45,60\\nSESSION_CREDIT_PRICE=10\\nSMTP_HOST=\\nSMTP_PORT=\\nSMTP_SECURE=false\\nSMTP_USER=\\nSMTP_PASS=\\nEMAIL_FROM=\\nPASSWORD_RESET_URL=http://localhost:5173/reset-password\\nADMIN_EMAIL=\\nADMIN_PASSWORD=\\nADMIN_NAME=Skill Swap Admin\\n'); fs.writeFileSync('c:/Users/pc/Downloads/SKILL-SWAP PROJECT/.env.example', 'NODE_ENV=development\\nPORT=5000\\nCLIENT_URL=http://localhost:5173\\nMONGODB_URI=mongodb://127.0.0.1:27017/skill_swap?replicaSet=rs0\\nJWT_SECRET=replace-with-a-long-random-secret\\nAUTH_COOKIE_NAME=skill_swap_token\\nAUTH_COOKIE_SAME_SITE=lax\\nAUTH_COOKIE_MAX_AGE_MS=604800000\\nSESSION_ALLOWED_DURATIONS=30,45,60\\nSESSION_CREDIT_PRICE=10\\nSMTP_HOST=\\nSMTP_PORT=\\nSMTP_SECURE=false\\nSMTP_USER=\\nSMTP_PASS=\\nEMAIL_FROM=\\nPASSWORD_RESET_URL=http://localhost:5173/reset-password\\nADMIN_EMAIL=\\nADMIN_PASSWORD=\\nADMIN_NAME=Skill Swap Admin\\n');\"",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Set valid env template",
+			"type": "shell",
+			"command": "cmd /c \"node -e \\\"const fs=require('fs'); const content='NODE_ENV=development\\nPORT=5000\\nCLIENT_URL=http://localhost:5173\\nMONGODB_URI=mongodb://127.0.0.1:27017/skill_swap?replicaSet=rs0\\nJWT_SECRET=replace-with-a-long-random-secret\\nAUTH_COOKIE_NAME=skill_swap_token\\nAUTH_COOKIE_SAME_SITE=lax\\nAUTH_COOKIE_MAX_AGE_MS=604800000\\nSESSION_ALLOWED_DURATIONS=30,45,60\\nSESSION_CREDIT_PRICE=10\\nSMTP_HOST=\\nSMTP_PORT=\\nSMTP_SECURE=false\\nSMTP_USER=\\nSMTP_PASS=\\nEMAIL_FROM=\\nPASSWORD_RESET_URL=http://localhost:5173/reset-password\\nADMIN_EMAIL=\\nADMIN_PASSWORD=\\nADMIN_NAME=Skill Swap Admin\\n'; fs.writeFileSync('c:/Users/pc/Downloads/SKILL-SWAP PROJECT/backend/.env', content); fs.writeFileSync('c:/Users/pc/Downloads/SKILL-SWAP PROJECT/.env.example', content);\\\"\"",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Execute env fixer",
+			"type": "shell",
+			"command": "node .tmp_fix_env.js",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Cleanup temp env fixer",
+			"type": "shell",
+			"command": "node -e \"import fs from 'node:fs'; fs.unlinkSync('c:/Users/pc/Downloads/SKILL-SWAP PROJECT/.tmp_fix_env.js');\"",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Remove temp env fixer",
+			"type": "shell",
+			"command": "node -e \"const fs = require('node:fs'); fs.unlinkSync('c:/Users/pc/Downloads/SKILL-SWAP PROJECT/.tmp_fix_env.js');\"",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Delete temp fixer",
+			"type": "shell",
+			"command": "del .tmp_fix_env.js",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Verify env load",
+			"type": "shell",
+			"command": "node --input-type=module -e \"import './backend/src/config/env.js'; console.log(process.env.MONGODB_URI); console.log(process.env.SMTP_HOST ?? '');\"",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Probe API endpoints",
+			"type": "shell",
+			"command": "node -e \"fetch('http://localhost:5000/api/health').then(r=>r.text()).then(t=>console.log('HEALTH', t)).catch(e=>console.error('HEALTH_ERR', e.message)); fetch('http://localhost:5000/api/categories').then(r=>{console.log('CATEGORIES_STATUS', r.status); return r.text();}).then(t=>console.log('CATEGORIES_BODY', t.slice(0,200))).catch(e=>console.error('CATEGORIES_ERR', e.message));\"",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Probe fetch",
+			"type": "shell",
+			"command": "node probe_fetch.js",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "List node processes",
+			"type": "shell",
+			"command": "powershell -NoProfile -Command \"Get-CimInstance Win32_Process | Where-Object { $_.Name -eq 'node.exe' } | Select-Object ProcessId,CommandLine | Format-Table -AutoSize\"",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Probe nodes",
+			"type": "shell",
+			"command": "node probe_process.js",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Build favicon change",
+			"type": "shell",
+			"command": "npm run build --workspace frontend",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check Mongo installation",
+			"type": "shell",
+			"command": "Get-Command mongod -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Source; Get-Service MongoDB -ErrorAction SilentlyContinue | Select-Object Name,Status",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Test API root response",
+			"type": "shell",
+			"command": "node --test backend/test/health.test.js",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Identify API port listener",
+			"type": "shell",
+			"command": "node",
+			"args": [
+				"-e",
+				"const { execFileSync } = require('node:child_process'); const lines = execFileSync('netstat', ['-ano'], { encoding: 'utf8' }).split(/\\r?\\n/).filter(line => /:5000\\s+.*LISTENING/i.test(line)); console.log(lines.join('\\n') || 'No process is listening on port 5000'); for (const pid of new Set(lines.map(line => line.trim().split(/\\s+/).pop()))) { try { console.log(execFileSync('tasklist', ['/FI', `PID eq ${pid}`, '/FO', 'LIST'], { encoding: 'utf8' })); } catch (error) { console.error(error.message); } }"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Inspect port 5000 listener",
+			"type": "shell",
+			"command": "netstat",
+			"args": [
+				"-ano"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Start backend using backend env",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"dev",
+				"--workspace",
+				"backend"
+			],
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "Restart Skill Swap backend",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"dev",
+				"--workspace",
+				"backend"
+			],
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "Run backend latest env",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"dev",
+				"--workspace",
+				"backend"
+			],
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "Diagnose backend on port 5001",
+			"type": "shell",
+			"command": "$env:PORT='5001'; npm run dev --workspace backend",
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "Identify backend port 5000 process",
+			"type": "shell",
+			"command": "Get-NetTCPConnection -LocalPort 5000 -State Listen -ErrorAction SilentlyContinue | Select-Object LocalAddress,LocalPort,OwningProcess | ForEach-Object { $p = Get-CimInstance Win32_Process -Filter \"ProcessId = $($_.OwningProcess)\"; [PSCustomObject]@{PID=$_.OwningProcess; Process=$p.Name; CommandLine=$p.CommandLine} } | Format-List",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Find backend listener PID",
+			"type": "shell",
+			"command": "Get-NetTCPConnection",
+			"args": [
+				"-LocalPort",
+				"5000",
+				"-State",
+				"Listen"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Read port 5000 PID",
+			"type": "shell",
+			"command": "Get-NetTCPConnection",
+			"args": [
+				"-LocalPort",
+				"5000",
+				"-State",
+				"Listen",
+				"|",
+				"Select-Object",
+				"-ExpandProperty",
+				"OwningProcess"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Inspect backend port process",
+			"type": "shell",
+			"command": "Get-CimInstance",
+			"args": [
+				"Win32_Process",
+				"-Filter",
+				"ProcessId = 32696",
+				"|",
+				"Select-Object",
+				"ProcessId,Name,CommandLine"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Seed MongoDB categories",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"seed",
+				"--workspace",
+				"backend"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Stop stale Skill Swap API",
+			"type": "shell",
+			"command": "Stop-Process",
+			"args": [
+				"-Id",
+				"32696"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Start Skill Swap API on port 5000",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"dev",
+				"--workspace",
+				"backend"
+			],
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "Find diagnostic backend PID",
+			"type": "shell",
+			"command": "Get-NetTCPConnection",
+			"args": [
+				"-LocalPort",
+				"5001",
+				"-State",
+				"Listen",
+				"|",
+				"Select-Object",
+				"-ExpandProperty",
+				"OwningProcess"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Stop diagnostic API server",
+			"type": "shell",
+			"command": "Stop-Process",
+			"args": [
+				"-Id",
+				"20228"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Sanitize config test fixture",
+			"type": "shell",
+			"command": "node",
+			"args": [
+				"scripts/repair-auth-config-test.mjs"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check Git deployment remote",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"remote",
+				"-v"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Inspect Git publishing state",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"status",
+				"--short",
+				"--branch"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check remote and secret exclusions",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"remote",
+				"-v"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Verify local environment ignored",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"check-ignore",
+				"-v",
+				"backend/.env"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Review unstaged change summary",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"diff",
+				"--stat"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check GitHub repository access",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"ls-remote",
+				"https://github.com/navyadeepikagali-pixel/SKILL_SWAP.git"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Summarize staged project files",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"diff",
+				"--cached",
+				"--stat"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "List staged project paths",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"diff",
+				"--cached",
+				"--name-only"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Connect GitHub deployment remote",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"remote",
+				"add",
+				"origin",
+				"https://github.com/navyadeepikagali-pixel/SKILL_SWAP.git"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		}
+	]
+}
