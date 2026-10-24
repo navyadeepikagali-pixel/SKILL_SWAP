@@ -785,96 +785,9 @@
 			"problemMatcher": []
 		},
 		{
-			"label": "Inspect Git publishing state",
+			"label": "Generate Skill Swap presentation",
 			"type": "shell",
-			"command": "git",
-			"args": [
-				"status",
-				"--short",
-				"--branch"
-			],
-			"isBackground": false,
-			"problemMatcher": []
-		},
-		{
-			"label": "Check remote and secret exclusions",
-			"type": "shell",
-			"command": "git",
-			"args": [
-				"remote",
-				"-v"
-			],
-			"isBackground": false,
-			"problemMatcher": []
-		},
-		{
-			"label": "Verify local environment ignored",
-			"type": "shell",
-			"command": "git",
-			"args": [
-				"check-ignore",
-				"-v",
-				"backend/.env"
-			],
-			"isBackground": false,
-			"problemMatcher": []
-		},
-		{
-			"label": "Review unstaged change summary",
-			"type": "shell",
-			"command": "git",
-			"args": [
-				"diff",
-				"--stat"
-			],
-			"isBackground": false,
-			"problemMatcher": []
-		},
-		{
-			"label": "Check GitHub repository access",
-			"type": "shell",
-			"command": "git",
-			"args": [
-				"ls-remote",
-				"https://github.com/navyadeepikagali-pixel/SKILL_SWAP.git"
-			],
-			"isBackground": false,
-			"problemMatcher": []
-		},
-		{
-			"label": "Summarize staged project files",
-			"type": "shell",
-			"command": "git",
-			"args": [
-				"diff",
-				"--cached",
-				"--stat"
-			],
-			"isBackground": false,
-			"problemMatcher": []
-		},
-		{
-			"label": "List staged project paths",
-			"type": "shell",
-			"command": "git",
-			"args": [
-				"diff",
-				"--cached",
-				"--name-only"
-			],
-			"isBackground": false,
-			"problemMatcher": []
-		},
-		{
-			"label": "Connect GitHub deployment remote",
-			"type": "shell",
-			"command": "git",
-			"args": [
-				"remote",
-				"add",
-				"origin",
-				"https://github.com/navyadeepikagali-pixel/SKILL_SWAP.git"
-			],
+			"command": "& 'C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe' -NoProfile -ExecutionPolicy Bypass -File 'generate-skill-swap-presentation.ps1'",
 			"isBackground": false,
 			"problemMatcher": []
 		}
